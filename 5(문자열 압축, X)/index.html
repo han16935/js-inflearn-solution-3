@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      //   1. 반복문을 통해 현재 문자와 뒷 문자를 비교
+      //    - 이 때, 맨 뒷 문자를 위해 인자로 들어온 str 뒤에 빈 문자열 더하기
+      //   2. 만약 두 문자가 같다면 count ++
+      //    3. 다르다면 answer에 현재 문자, count를 더함
+      //   4. count가 1이라면 현재 문자만 더함
+      const strCompress = function (str) {
+        let plusEmptyStr = str + " ";
+        let answer = "";
+        let count = 1;
+        for (let i = 0; i < plusEmptyStr.length - 1; i++) {
+          if (plusEmptyStr[i] === plusEmptyStr[i + 1]) count++;
+          else {
+            if (count === 1) answer += plusEmptyStr[i];
+            else {
+              answer += plusEmptyStr[i];
+              answer += count;
+              count = 1;
+            }
+          }
+        }
+
+        return answer;
+      };
+
+      console.log(strCompress("KKHSSSSSSSE"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const validPalin = function (string) {
+        const lowerString = string.toLowerCase();
+        const onlyLowerString = lowerString.replace(/[^a-z]/g, "");
+        //  /[^a-z]g/ : 문자열에서 영어 소문자를 제외한 모든 문자 선택
+        // ^ : 제외를 의미
+        const reversedOnlyLowerString = onlyLowerString
+          .split("")
+          .reverse()
+          .join("");
+        console.log(reversedOnlyLowerString === onlyLowerString ? "YES" : "NO");
+      };
+      validPalin("found7, time: study; Yduts; emit, 7Dnuof");
+    </script>
+  </body>
+</html>

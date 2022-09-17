@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      const shortestDis = function (str, t) {
+        // const answer = [];
+        // let flag = 0;
+        // let dis;
+        // for (let i = 0; i < str.length; i++) {
+        //   answer[i] = 0;
+        // }
+
+        // while (flag < str.length) {
+        //   dis = 0;
+        //   if (str.charAt(flag) !== t) {
+        //     dis++;
+        //   } else {
+        //     if (flag > 0 && answer[flag - 1] < answer[flag]) {
+        //     }
+        //     answer[flag] = dis;
+        //     flag++;
+        //   }
+        // }
+
+        const answer = [];
+        let dis = 100;
+        for (let i = 0; i < str.length; i++) {
+          // 1. 배열 초기화
+          answer[i] = 0;
+
+          // 2. 현재 위치의 왼쪽에 있는 t를 기준으로 거리 측정(같은 철자일 경우, dis <- 0, 아니라면 dis++)
+          if (str.charAt(i) !== t) {
+            dis++;
+          } else {
+            dis = 0;
+          }
+          answer[i] = dis;
+        }
+
+        // 2.5 dis 초기화
+        dis = 100;
+
+        // 3. 현재 위치의 오른쪽 위치에 있는 t를 기준으로 거리 측정(같은 철자일 경우, dis <- 0, 아니라면 dis++)
+        for (let j = str.length - 1; j >= 0; j--) {
+          if (str.charAt(j) !== t) {
+            dis++;
+          } else {
+            dis = 0;
+          }
+
+          // 4. 2와 3에서 측정한 거리를 비교해서 더 작은 값을 answer 배열에 대입
+          if (answer[j] > dis) {
+            answer[j] = dis;
+          }
+        }
+
+        answer.forEach(function (v, i) {
+          console.log(v);
+        });
+      };
+
+      shortestDis("teachermode", "e");
+    </script>
+  </body>
+</html>
